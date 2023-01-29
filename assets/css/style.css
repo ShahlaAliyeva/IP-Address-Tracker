@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 10rem;
+}
+
+header .header-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+}
+
+header .header-img img{
+    object-fit: fill;
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+
+header .header-content {
+    z-index: 100;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+header .header-content h1 {
+    font-size: 1.8rem;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    color: #fff;
+}
+
+header .header-content .header-input {
+    margin-top: 2rem;
+    display: flex;
+}
+
+header .header-content .header-input input {
+    height: 2.8rem;
+    width: 27rem;
+    border-top-left-radius: .7rem;
+    border-bottom-left-radius: .7rem;
+    border: none;
+    padding: 1rem .8rem;
+    box-sizing: border-box;
+    font-size: .9rem;
+    font-weight: 700;
+}
+
+header .header-content .header-input input:focus {
+    outline: none;
+}
+
+header .header-content .header-input button {
+    background-color: hsl(0, 0%, 17%);
+    position: relative;
+    width: 2.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    border: none;
+    border-top-right-radius: .7rem;
+    border-bottom-right-radius: .7rem;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+header .header-content .header-input button:hover {
+    background-color: hsl(0, 0%, 24%);
+}
+
+header .header-content .header-input button img{
+    width: .8rem;
+    margin-top: .9rem;
+}
+
+/* IP adress section*/
+
+#ip-adress {
+    background-color: #fff;
+    position: absolute;
+    width: 55%;
+    height: 9rem;
+    margin: 1.7rem 20.8rem;
+    border: 1px solid hsl(0, 0%, 59%);
+    font-family: 'Rubik', sans-serif;
+    padding: 2rem;
+    box-sizing: border-box;
+    border-radius: .5rem;
+    z-index: 100;
+}
+
+#ip-adress ul {
+    display: flex;
+    align-items: center;
+    height: auto;
+}
+
+#ip-adress ul li {
+    list-style-type: none;
+    /* background-color: black; */
+    width: 25%;
+    height: 6rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+#ip-adress ul li:not(:first-child) {
+    border-left: 2px solid hsl(0, 0%, 59%);
+    padding-left: 1.7rem;
+}
+
+#ip-adress ul li h2 {
+    font-weight: 700;
+    letter-spacing: .9px;
+    text-transform: uppercase;
+    font-size: .6rem;
+    color: hsl(0, 0%, 59%);
+    margin-bottom: .8rem;
+}
+
+#ip-adress ul li span {
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+
+/* map */
+
+#map {
+    width: 100%;
+    height: 28rem;
+    margin-top: 6.5rem;
+}
