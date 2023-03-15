@@ -151,34 +151,51 @@ header .header-content .header-input button img {
 }
 
 @media (max-width: 475px) {
+    header {
+        height: 9rem;
+    }
+
+    header .header-content {
+        margin-top: 2rem;
+    }
+
+    header .header-content .header-input {
+        margin-top: 1.5rem;
+    }
+
     header .header-content .header-input input {
         height: 2.8rem;
-        width: 14rem;
+        width: 15rem;
         border: 1px solid #ddd;
+        font-size: .7rem;
     }
 
     header .header-img> img {
-        object-fit: cover;
-        width: 100%;
-        height: 20rem;
-        position: absolute;
-        top: 0;
+        height: 25rem;
     }
 
     #ip-adress {
         background-color: #fff;
         position: absolute;
-        width: 70%;
-        height: 20rem;
+        width: 80%;
+        height: auto;
         padding: .6rem 1rem;
+        margin-top: 0rem;
     }
 
     #ip-adress ul {
         flex-direction: column;
+        justify-content: space-evenly;
     }
 
     #ip-adress ul li:not(:first-child) {
         border: none;
         padding-left: 0;
+    }
+
+    #ip-adress ul li {
+        height: 4rem;
+        text-align: center;
+        width: 100%;
     }
 }

@@ -12,9 +12,6 @@ let locationIcon = L.icon({
   iconAnchor: [10, 35]
 })
 
-var marker = L.marker([lat, lng], {
-  icon: locationIcon
-}).addTo(map);
 
 function getIpAdress() {
   var ipAdress = $(".header-input input").val().trim();
@@ -24,15 +21,16 @@ function getIpAdress() {
   var marker = L.marker([lat, lng], {
     icon: locationIcon
   }).addTo(map);
-  
+
   fetch(
       `https://geo.ipify.org/api/v2/country,city?apiKey=at_hFRKXJtDiw5cinwP0DBS094tG0NEa&ipAddress=${ipAdress}`
     )
     .then((response) => response.json())
     .then((data) => {
+      let timezone = "UTC " + data.location.timezone
       $(".ip").text(data.ip);
       $(".location").text(data.location.city);
-      $(".timezone").text("UTC " + data.location.timezone);
+      $(".timezone").text(timezone);
       $(".isp").text(data.isp);
       console.log(data);
       changedAdress = data.location.region
