@@ -9,6 +9,14 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.5/axios.min.js" integrity="sha512-JEXkqJItqNp0+qvX53ETuwTLoz/r1Tn5yTRnZWWz0ghMKM2WFCEYLdQnsdcYnryMNANMAnxNcBa/dN7wQtESdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+  <!-- Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+  integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
+
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="stylesheet" href="./assets/css/reset.css">
 
@@ -31,7 +39,7 @@
         <h1>IP Adress Tracker</h1>
         <div class="header-input">
           <input type="text" placeholder="Search for any IP adress or domain">
-          <button class="submit"> <img src="./assets/images/icon-arrow.svg" alt="arrow"></button>
+          <button class="submit" onclick="getIpAdress()"> <img src="./assets/images/icon-arrow.svg" alt="arrow"></button>
         </div>
       </div>
     </div>
@@ -59,9 +67,9 @@
   </section>
 
   <div id="map"></div>
-  <script async defer
+  <!-- <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAtTwMx2OsK4Wk5HidozFBsz_0OQ_pJbo&callback=initMap"
-  ></script>
+  ></script> -->
 
   
   <!-- <div class="attribution">

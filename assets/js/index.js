@@ -1,94 +1,56 @@
-// api key: at_hFRKXJtDiw5cinwP0DBS094tG0NEa
-// fetch country: https://geo.ipify.org/api/v2/country?apiKey=at_hFRKXJtDiw5cinwP0DBS094tG0NEa&ipAddress=8.8.8.8
-// fetch city: https://geo.ipify.org/api/v2/country,city?apiKey=at_hFRKXJtDiw5cinwP0DBS094tG0NEa&ipAddress=8.8.8.8
+var changedAdress = ''
 
-$(document).ready(function () {
-  $(".header-input button").on("click", function () {
-    var ipAdress = $(".header-input input").val().trim();
+var map = L.map('map').setView([40.37767, 49.89201], 12);
 
-    fetch(
-      `https://geo.ipify.org/api/v2/country?apiKey=at_hFRKXJtDiw5cinwP0DBS094tG0NEa&ipAddress=${ipAdress}`
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19
+}).addTo(map);
+
+let locationIcon = L.icon({
+  iconUrl: './assets/images/icon-location.svg',
+  iconSize: [30, 40],
+  iconAnchor: [10, 35]
+})
+
+var marker = L.marker([lat, lng], {
+  icon: locationIcon
+}).addTo(map);
+
+function getIpAdress() {
+  var ipAdress = $(".header-input input").val().trim();
+  let lat = 0
+  let lng = 0
+
+  var marker = L.marker([lat, lng], {
+    icon: locationIcon
+  }).addTo(map);
+  
+  fetch(
+      `https://geo.ipify.org/api/v2/country,city?apiKey=at_hFRKXJtDiw5cinwP0DBS094tG0NEa&ipAddress=${ipAdress}`
     )
-      .then((response) => response.json())
-      .then((data) => {
-        var adress = data.location.region
-        $(".ip").text(data.ip);
-        $(".location").text(data.location.region);
-        $(".timezone").text("UTC " + data.location.timezone);
-        $(".isp").text(data.isp);
-        console.log(data);
-        /*
-        console.log("IP: ", data.ip);
-        console.log("ISP: ", data.isp);
-        console.log("COUNTRY: ", adress);
-        console.log("Timezone: UTC ", data.location.timezone); */
-      })
-      .catch((error) => {
-        error = "Please wait for a few minutes";
-        console.log(error);
-      });
+    .then((response) => response.json())
+    .then((data) => {
+      $(".ip").text(data.ip);
+      $(".location").text(data.location.city);
+      $(".timezone").text("UTC " + data.location.timezone);
+      $(".isp").text(data.isp);
+      console.log(data);
+      changedAdress = data.location.region
+      lat = data.location.lat
+      lng = data.location.lng
+      console.log('data lat: ', lat)
+      console.log('data lang: ', lng)
+      map.setView([lat, lng], 14),
+        marker.setLatLng([lat, lng])
 
-    $(".header-input input").val("");
-  });
-
-  function initMap() {
-    var options = {
-      zoom: 10,
-      center: new google.maps.LatLng(40.409264, 49.867092),
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-
-    //new map
-    var map = new google.maps.Map(document.getElementById('map'), options)
-    console.log('map')
-
-    $(".location").on('DOMSubtreeModified',function(){
-      console.log('location changed: ', $('.location').text());
-      var arr =  $('.location').text().split(' ')
-
-      console.log(arr[0]);
+    })
+    .catch((error) => {
+      error = "Please wait for a few minutes";
+      console.log(error);
     });
 
-    //add marker
-    google.maps.event.addListener(map, 'click', function(property) {
-      var location = property.latLng
+  $(".header-input input").val("");
 
-      console.log('changed map location: ', location)
-      var marker = new google.maps.Marker({
-        position: location,
-        map: map,
-        icon: './assets/images/icon-location.svg'
-      })
+  console.log('Ip region changed: ', changedAdress);
 
-      let lat = marker.getPosition().lat()
-      let lng = marker.getPosition().lng()
-
-      console.log(lat);
-      console.log(lng);
-
-      $.ajax({
-        method: 'POST',
-        url: `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyAAtTwMx2OsK4Wk5HidozFBsz_0OQ_pJbo`,
-        success: function (data) {
-          console.log(data.results[0].formatted_address);
-        }
-      });
-    })
-   
-  }
-  window.initMap = initMap;
-});
-
-
-   // Initialize and add the map
-   
-
-  //Call Geocode 
-
-  // geocode()
-
-  // function geocode() {
-  //   var location = '22 Main st Boston MA';
-
-  //   axios.get()
-  // }
+}
