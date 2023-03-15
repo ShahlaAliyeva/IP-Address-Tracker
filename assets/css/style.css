@@ -179,7 +179,7 @@ header .header-content .header-input button img {
         position: absolute;
         width: 80%;
         height: auto;
-        padding: .6rem 1rem;
+        padding: 1.3rem 1rem .3rem 1rem;
         margin-top: 0rem;
     }
 
@@ -194,8 +194,12 @@ header .header-content .header-input button img {
     }
 
     #ip-adress ul li {
-        height: 4rem;
+        height: 3.5rem;
         text-align: center;
         width: 100%;
+    }
+
+    #ip-adress ul li h2 {
+        margin-bottom: .6rem;
     }
 }
