@@ -52,3 +52,5 @@ function getIpAdress() {
   console.log('Ip region changed: ', changedAdress);
 
 }
+
+window.onload(getIpAdress())
